@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { dummyFaultData } from "../data/dummyFaultData"
 
 const USE_DUMMY_DATA = false   // false → real ESP
-const ESP_IP = ""
+const ESP_IP = import.meta.env.VITE_ESP_IP
 
 export const useFaultData = () => {
   const [data, setData] = useState(null)
