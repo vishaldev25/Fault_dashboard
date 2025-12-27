@@ -79,3 +79,44 @@ html{
   }
 }
 
+/* =================================================
+   Stats component
+================================================= */
+@layer components {
+  .stats-grid {
+    @apply grid grid-cols-2 lg:grid-cols-4
+           gap-4
+           mb-6;
+  }
+
+  .stat-card {
+    @apply bg-slate-800/60
+           p-4
+           rounded-lg;
+  }
+
+  .stat-label {
+    @apply text-[10px] sm:text-xs
+           uppercase
+           tracking-wider
+           text-slate-400;
+  }
+
+  .stat-value {
+    @apply text-lg sm:text-2xl
+           font-bold
+           mt-1;
+  }
+
+  .stat-default {
+    @apply text-cyan-400;
+  }
+
+  .stat-fault {
+    @apply text-red-400;
+  }
+
+  .stat-recovery {
+    @apply text-green-400;
+  }
+}
