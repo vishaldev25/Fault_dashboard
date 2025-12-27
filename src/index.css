@@ -64,20 +64,100 @@ html{
   }
 }
 
-/* Event card CSS */
-@layer components{
-  .event-card{
-    @apply p-4 rounded-xl border-l-4 mb-4 transition
+/* =================================================
+   Event cards (FIXED & COMPLETE)
+================================================= */
+@layer components {
+  .event-card {
+    @apply relative
+           rounded-2xl
+           p-5
+           mb-5
+           bg-gradient-to-br
+           from-slate-800/80 to-slate-900/80
+           backdrop-blur
+           shadow-lg
+           border border-white/5;
   }
 
-  .event-fault{
-    @apply border-red-500 bg-red-500/5
+  .event-accent {
+    @apply absolute
+           left-0 top-0
+           h-full
+           w-1.5
+           rounded-l-2xl;
   }
 
-  .event-recovery{
-    @apply border-green-500 bg-green-500/5
+  .event-accent-fault {
+    @apply bg-red-500;
+  }
+
+  .event-accent-recovery {
+    @apply bg-green-500;
+  }
+
+  .event-header {
+    @apply flex
+           items-center
+           justify-between
+           mb-4;
+  }
+
+  .event-status {
+    @apply flex
+           items-center
+           gap-3
+           font-bold
+           text-lg;
+  }
+
+  .event-badge {
+    @apply text-xs
+           font-semibold
+           px-3
+           py-1
+           rounded-full;
+  }
+
+  .event-badge-fault {
+    @apply bg-red-500/20 text-red-400;
+  }
+
+  .event-badge-recovery {
+    @apply bg-green-500/20 text-green-400;
+  }
+
+  .event-time {
+    @apply text-sm text-slate-400;
+  }
+
+  .event-grid {
+    @apply grid
+           grid-cols-2
+           sm:grid-cols-4
+           gap-4;
+  }
+
+  .event-info {
+    @apply bg-white/5
+           rounded-xl
+           p-3;
+  }
+
+  .event-info-label {
+    @apply text-xs
+           uppercase
+           tracking-wider
+           text-slate-400
+           mb-1;
+  }
+
+  .event-info-value {
+    @apply font-bold
+           text-base;
   }
 }
+
 
 /* =================================================
    Stats component
