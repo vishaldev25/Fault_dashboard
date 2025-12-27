@@ -51,7 +51,7 @@ html{
   }
 
   .dashboard-title {
-    @apply text-xl sm:text-2xl lg:text-3xl
+    @apply text-2xl sm:text-2xl lg:text-3xl
            font-bold
            bg-gradient-to-r from-cyan-400 to-indigo-400
            bg-clip-text text-transparent;
@@ -60,7 +60,22 @@ html{
   .dashboard-subtitle {
     @apply text-xs sm:text-sm
            text-slate-400
-           mt-2;
+           mt-2 ml-8;
+  }
+}
+
+/* Event card CSS */
+@layer components{
+  .event-card{
+    @apply p-4 rounded-xl border-l-4 mb-4 transition
   }
 
+  .event-fault{
+    @apply border-red-500 bg-red-500/5
+  }
+
+  .event-recovery{
+    @apply border-green-500 bg-green-500/5
+  }
 }
+
