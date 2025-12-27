@@ -1,35 +1,43 @@
 import { useState, useEffect } from "react"
 import { dummyFaultData } from "../data/dummyFaultData"
 
-// 🔁 DEVELOPMENT SWITCH
-const USE_DUMMY_DATA = true   // false → ESP8266 real data
-
-const ESP_IP = "http://192.168.1.50"  // ESP IP
+const USE_DUMMY_DATA = false   // false → real ESP
+const ESP_IP = ""
 
 export const useFaultData = () => {
   const [data, setData] = useState(null)
+  const [isOnline, setIsOnline] = useState(false)
 
   useEffect(() => {
     // -----------------------------
-    // Dummy data (development)
+    // Dummy data (always ONLINE)
     // -----------------------------
     if (USE_DUMMY_DATA) {
       setData(dummyFaultData)
+      setIsOnline(true)
       return
     }
 
     // -----------------------------
-    // Real ESP8266 data
+    // Real ESP data
     // -----------------------------
     const timer = setInterval(() => {
       fetch(`${ESP_IP}/fault_data.json`)
-        .then(res => res.json())
-        .then(setData)
-        .catch(() => {})
-    }, 500)
+        .then(res => {
+          if (!res.ok) throw new Error("ESP not responding")
+          return res.json()
+        })
+        .then(json => {
+          setData(json)
+          setIsOnline(true)
+        })
+        .catch(() => {
+          setIsOnline(false)
+        })
+    }, 1000)
 
     return () => clearInterval(timer)
   }, [])
 
-  return data
+  return { data, isOnline }
 }
